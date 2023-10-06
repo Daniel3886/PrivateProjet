@@ -1,4 +1,4 @@
-const button = document.getElementById('showButton');
+const button = document.getElementById('button');
 const birthdayImage = document.getElementById('birthdayImage');
 
 button.addEventListener('click', () => {
@@ -6,26 +6,29 @@ button.addEventListener('click', () => {
     birthdayImage.classList.remove('hidden');
 
     // Generate confetti particles
-    for (let i = 0; i < 50; i++) {
-        const confetti = document.createElement('div');
-        confetti.className = 'confetti';
-        confetti.style.left = `${Math.random() * 100}vw`;
-        confetti.style.animationDuration = `${Math.random() * 1 + 0.5}s`;
-        confetti.style.animationDelay = `${Math.random() * 2}s`;
-        document.body.appendChild(confetti);
+    for (let i = 0; i < 100; i++) {
+      const confetti = document.createElement('div');
+      confetti.className = 'confetti';
+      confetti.style.left = `${Math.random() * 100}vw`;
+      confetti.style.animationDuration = `${Math.random() * 4 + 3}s`;
+      confetti.style.animationDelay = `${Math.random() * 3}s`;
+      confetti.style.zIndex = `${Math.floor(Math.random() * 5)}`;
+      confetti.style.backgroundImage = `url(./candies/candy-${Math.floor(Math.random() * 5) + 1}.svg)`;
+      document.body.appendChild(confetti);
 
-        confetti.addEventListener('animationend', () => {
-            confetti.remove();
+      confetti.addEventListener('animationend', () => {
+          confetti.remove();
         });
     }
 });
 
-// Create decorative elements on the sides
-const leftDecoration = document.createElement('div');
-leftDecoration.className = 'decoration left';
-document.body.appendChild(leftDecoration);
+const playButton = document.getElementById('button');
+const audioElement = document.getElementById('birthdaySong');
 
-const rightDecoration = document.createElement('div');
-rightDecoration.className = 'decoration right';
-document.body.appendChild(rightDecoration);
-
+playButton.addEventListener('click', () => {
+  if (audioElement.paused || audioElement.ended) {
+    audioElement.play();
+  } else {
+    audioElement.pause();
+  }
+});
