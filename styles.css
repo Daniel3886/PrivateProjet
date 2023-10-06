@@ -1,0 +1,55 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(to bottom right, #ff6392, #ff9f3d); /* Colorful gradient background */
+    overflow: hidden; /* Hide overflowing confetti particles */
+}
+
+.container {
+    text-align: center;
+    position: relative;
+    z-index: 2; /* Ensure content appears above the background */
+}
+
+.hidden {
+    display: none;
+}
+
+.confetti {
+    width: 10px;
+    height: 10px;
+    background-color: #ffcb05; /* Confetti color */
+    position: absolute;
+    border-radius: 50%;
+    z-index: 1;
+    animation: confetti-fall 1s ease-out infinite;
+}
+
+@keyframes confetti-fall {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+
+.decoration {
+    position: fixed;
+    height: 100%;
+    width: 20px; /* Width of the decorative elements */
+    background-color: #ffcb05; /* Decorative elements color */
+    opacity: 0.8;
+    z-index: 1;
+}
+
+.decoration.left {
+    left: 0;
+}
+
+.decoration.right {
+    right: 0;
+}
