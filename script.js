@@ -18,8 +18,9 @@ button.addEventListener('click', () => {
 
       confetti.addEventListener('animationend', () => {
           confetti.remove();
-        });
-    }
+      });
+  }
+  button.textContent = "💖Happy Birthsday!💖";
 });
 
 const playButton = document.getElementById('button');
